@@ -16,7 +16,7 @@
 const rules = {
   rock: ["scissors", "lizard"],
   paper: ["rock", "spock"],
-  scissors: ["scissors", "paper"],
+  scissors: ["lizard", "paper"],
   lizard: ["paper", "spock"],
   spock: ["scissors", "rock"],
 }
@@ -48,4 +48,4 @@ function play(userChoice) {
   }
 
 }
-console.log(play("paper"));
+console.log(play("rock"));
