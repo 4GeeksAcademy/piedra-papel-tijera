@@ -14,33 +14,38 @@
 
 
 const rules = {
-  piedra: ["tijera", "lagarto"],
-  papel: ["piedra", "spock"],
-  tijera: ["lagarto", "papel"],
-  lagarto: ["papel", "spock"],
-  spock: ["tijera", "rock"],
+  rock: ["scissors", "lizard"],
+  paper: ["rock", "spock"],
+  scissors: ["scissors", "paper"],
+  lizard: ["paper", "spock"],
+  spock: ["scissors", "rock"],
 }
 
-const options = ["piedra", "papel", "tijera", "lagarto", "spock"] //esta multiplicacion me permite "estirar" el numero dado por math random * cualquiera del numero dado en option.lenght.
+const options = ["rock", "paper", "scissors", "lizard", "spock"] // esta multiplicacion me permite "estirar" el numero dado por math random * cualquiera del numero dado en option.lenght.
 
-//funcion ala antigua lvd.
-function Jugar(userChoice) {
+//funcion a la antigua lvd.
+function play(userChoice) {
 
-  const randomComputerNumber = Math.floor(Math.random() * options.length)  //la opcion elegida por la computadora es alamacenada en una variiable que contiene las options pero en la posicion dada por randomcomputernumber. 
-  const computerChoice = options[randomComputerNumber]
+  let randomComputerNumber = Math.floor(Math.random() * options.length)  // la opcion elegida por la computadora es alamacenada en una variiable que contiene las options pero en la posicion dada por randomcomputernumber. Aunque vi en la clase que almacenaron en una const, pues no veo la necesidad aqui.
+  let computerChoice = options[randomComputerNumber]
 
- //elegi poner return para luego poder averiguar la opcion de computadora, porque hacerlo con el prompt me pedia que instalara algo y bueno... entonces aqui retorno 
- //lo que la computadora eligio/
+ 
+//condiciones:
+//elegi poner return para luego poder averiguar la opcion de computadora con el consol.log entonces aqui retorno una frase a traves de una cadena concatenada [+]
+
+ 
+
   if (userChoice === computerChoice) {
-    return "La computadora eligió " + computerChoice + " — Empate!";
+    return "La computadora eligió " + computerChoice + "  It's a tie!";
   }
-
+//si no es empate anteriormente, busca la palabra elegida por computechoice dentro de el valor de la key (palabra en este caso) elegida por el usurario. 
+//si la encuentra retorna que ha ganado el usuario. Esto funciona porque, esta operacion se traduce a una operacion boleana. esa palabra esta incluida? si es verdadero retorna. si no, siguente condicionante.
   else if (rules[userChoice].includes(computerChoice)) {
-    return "La computadora eligió " + computerChoice + " — ¡Ganaste!"
+    return "La computadora eligió " + computerChoice + " You woooon!"
   }
   else {
-    return "La computadora eligió " + computerChoice + " — Perdiste.";
+    return "La computadora eligió " + computerChoice + "  So sad, you lost :(";
   }
 
 }
-console.log(Jugar("piedra"));
+console.log(play("paper"));
